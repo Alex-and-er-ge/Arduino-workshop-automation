@@ -1,4 +1,5 @@
-
+//Задействована Ардуина Уна, lcd1602, bmp280, 4x4 клавиатура, датчик света, датчик движения, бипер, rtc часы, 2 реле
+// Что куда подключено - смотри в коде
 #include <Wire.h>
 #include <SPI.h>
 #include <Adafruit_Sensor.h>
@@ -11,7 +12,6 @@
 Adafruit_BMP280 bme; // I2C
 Rtc_Pcf8563 rtc;
 LiquidCrystal lcd(4 , 5 , 6 , 7 , 8 , 9);
-
 
 int  adc_key_val[NUM_KEYS] = {50, 130, 200, 300, 350, 390, 430, 475, 510, 535, 560, 585, 610, 628, 640, 700};
 int s1 = A2;   // Выбираем пин для подключения датчика освещенности "Фоторезистора"
@@ -41,7 +41,6 @@ int total = 0;                  // суммарное значение
 int average = 0;                // среднее значение
 
 
-
 void setup()
 {
   Serial.begin(9600);
@@ -51,8 +50,6 @@ void setup()
   pinMode(sensorPin, INPUT);
   pinMode(in1, OUTPUT);    // Установим вывод 5 как выход
   pinMode(in2, OUTPUT);    // Установим вывод 6 как выход
-
-
 
 
   //clear out all the registers
@@ -117,9 +114,6 @@ void loop()
 
   delay (1000);
 
-
-
-
     if (count == 59) {
       countm++;
       count = 0;
@@ -160,11 +154,11 @@ if (countm == 99)
   lcd.print(average);
   lcd.setCursor(0, 1);
   
-     lcd.print(countm);
-     lcd.print(":");
-    lcd.print(count);
+   lcd.print(countm);
+   lcd.print(":");
+   lcd.print(count);
    lcd.setCursor(7, 1);
-    lcd.print(save1);
+   lcd.print(save1);
 
 
   
